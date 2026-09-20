@@ -107,7 +107,7 @@ async function importRows(rows, sourceName) {
     await dbSet('forecast', { data, at: new Date().toISOString(), sourceName });
     return `Prévisions : ${data.length.toLocaleString('fr-FR')} lignes`;
   }
-  if (headers.includes('latitude') && headers.includes('longitude') && headers.includes('prixgazole')) {
+  const isOfficialFuelFeed =   headers.includes('latitude') &&   headers.includes('longitude') &&   (headers.includes('id') || headers.includes('idstation'));  if (isOfficialFuelFeed) {
     const data = parseLive(rows); if (!data.length) throw Error('Aucune station officielle exploitable.');
     await dbSet('live', { data, at: new Date().toISOString(), sourceName });
     return `Flux officiel : ${data.length.toLocaleString('fr-FR')} stations`;
