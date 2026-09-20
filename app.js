@@ -54,7 +54,10 @@ function setData(rows, label) {
   const stations = makeStations(rows);
   if (!stations.length) throw new Error('Aucune ligne reconnue. Le fichier attendu doit contenir id_station, marque, ville, code_postal, type_carburant et prix_actuel.');
   state.stations = stations;
-  localStorage.setItem('cv.cache', JSON.stringify(stations)); localStorage.setItem('cv.cachedAt', new Date().toISOString());
+  // Le jeu de données complet dépasse souvent le quota localStorage.
+// On garde seulement la date du dernier import.
+localStorage.removeItem('cv.cache');
+localStorage.setItem('cv.cachedAt', new Date().toISOString());
   $('#dataNotice').innerHTML = `<strong>${stations.length.toLocaleString('fr-FR')} prix importés.</strong> ${escapeHTML(label)} · Cette source ne contient pas les coordonnées GPS exactes des stations.`;
   $('#loadStatus').textContent = `Import réussi : ${stations.length.toLocaleString('fr-FR')} prix station/carburant reconnus.`;
   renderAll(); toast('Prévisions importées');
@@ -95,7 +98,10 @@ function openStation(encoded) { const s = state.stations.find(x => x.id === deco
 function switchTab(tab) { $$('.tab-panel').forEach(el => el.classList.toggle('active', el.id === `tab-${tab}`)); $$('.bottom-nav button').forEach(el => el.classList.toggle('active', el.dataset.tab === tab)); }
 function bind() {
   const options = '<option value="">Tous les carburants</option>' + FUELS.map(f => `<option>${f}</option>`).join(''); $('#filterFuel').innerHTML = options; $('#calcFuel').innerHTML = FUELS.map(f => `<option>${f}</option>`).join(''); $('#vehicleFuel').innerHTML = FUELS.map(f => `<option>${f}</option>`).join('');
-  $('#sourceUrl').value = localStorage.getItem('cv.sourceUrl') || DEFAULT_SOURCE_URL; const cache = JSON.parse(localStorage.getItem('cv.cache') || '[]'); if (cache.length) { state.stations = cache; renderAll(); }
+  $('#sourceUrl').value = localStorage.getItem('cv.sourceUrl') || DEFAULT_SOURCE_URL; // Le CSV n’est pas restauré depuis localStorage : il est trop volumineux.
+// L’utilisateur réimporte les données à chaque ouverture, ou une future version
+// utilisera IndexedDB pour conserver un cache volumineux.
+localStorage.removeItem('cv.cache');
   $$('.bottom-nav button').forEach(button => button.onclick = () => switchTab(button.dataset.tab)); $$('[data-open-tab]').forEach(button => button.onclick = () => switchTab(button.dataset.openTab));
   $('#locationButton').onclick = () => toast('Cette source ne fournit pas les coordonnées GPS : recherchez une ville ou fusionnez un flux géolocalisé.'); $('#themeButton').onclick = () => document.body.classList.toggle('dark');
   $('#loadUrlButton').onclick = loadURL; $('#refreshButton').onclick = loadURL; $('#fileInput').onchange = event => { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => { try { loadText(reader.result, file.name); } catch (error) { $('#loadStatus').textContent = error.message; } }; reader.readAsText(file); };
