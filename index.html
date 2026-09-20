@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b5d3b">
+  <meta name="description" content="Comparateur de prix et prévisions carburant près de vous">
+  <script type="text/javascript" nonce="7d50bd87bccd468d978358c71db" src="//local.adguard.org?ts=1789891423327&amp;type=content-script&amp;dmn=ppl-ai-code-interpreter-files.s3.amazonaws.com&amp;url=https%3A%2F%2Fppl-ai-code-interpreter-files.s3.amazonaws.com%2Fask-engine%2Fdirect-files%2F2a3e0086b4410adf64c27803876b5ab9%2Fd3c95af4-9c35-4e38-9ed9-bfe6947d8053%2F1bc04b52.html%3Fresponse-content-disposition%3Dattachment%253B%2520filename%253D%2522index.html%2522%253B%2520filename%252A%253DUTF-8%2527%2527index.html%26AWSAccessKeyId%3DASIA2F3EMEYEY4X2VXR3%26Signature%3Dp48l4tsELbCDX0%252FxClSwtN8Y1uI%253D%26x-amz-security-token%3DIQoJb3JpZ2luX2VjEKj%252F%252F%252F%252F%252F%252F%252F%252F%252F%252FwEaCXVzLWVhc3QtMSJHMEUCIAqEnsdSUmJ12ICRLoJNc3F3AlY0Wa5RdJFV9uNshZW9AiEAtEKQD0cUvyo7OTQ0kmjbP1s0n6Ilg0a9I3SsI%252BCkt4gq8wQIcBABGgw2OTk3NTMzMDk3MDUiDOGfJq5sa37BBTPOJCrQBPCOd3XZj%252FZldd2xAnNJxYHns5bsydVkKKYzc5JRoCD4U1U5Jauk558GCzZ2BAEAFy5IIkUts%252FjNO5YieTZLrmWI0waOCPIq31vJlBNWJ4ynNVzTpf08hMgdgUoLD5d9T%252BJfO23cT%252BmX6hEGYTz%252BOH5xHy9DUiyb29q8jbZNMUNERw9GHZi9HG0QNpI8jrFosx2iBwDJRVvclXAFf6OTBhr3z1qbZ%252B3o7n9t7o2y3RO7fEZG%252FphjpuiC%252BqoqU7xVYerotq4p17HxJRtH1klJr543CczGEaQmXDgbXNq1NyphhEpkbaWAa6BZUXT7shvewLHxTkPCNAczPY6W%252FhFhHRrG8OqTEToT89KlQ9gDqhmFGuqcNfhC%252F7mWte71YVfFkmUnb2K4Ubyr5SDJDQ9YmpeQSTXb33IETjHlLM7Nrk4FYoypko9oB8UCnUPBF%252FfokEy6rDXKM7WCDpvVVSWT1ClvSnjjsVllUYB8kY92QF%252F5%252B5U4CWVgFqTD2WW877pyhAc0o23qz9WfYZL24Iqfn123hNP1ZujSU7IvmfjXeXMwZI6Xt7I7UIjOP8KKcZh4zymT4lEC8EUosf%252BCg0eD6yeMn3B06CBtrqNIINr238ihXGLQLhZguSGIE17KwOVRILoX9y883QTKaU5jI8w27KXNNybxEL5ohBS%252FgbisWvfwJwnXtFxImA1Pfe%252FXsyaqCnSxSWW1fyCqwvMxxQem%252B%252Biz5qsO4JsxZYwuwZcCuoz9MXIDu%252F%252F0Mtrfe0awZli7Y%252BNyXXcRrBWqce%252FJhsTMT1gw%252FJ6%252B1QY6mAF12%252FWi8QxHokQ2wkkqrNAtXcwMcJQYr%252F8l6Kme7HO6eZ%252F1P%252BgHXxJJ%252BOHjHGJ5bTlsyTrv1H4GjehbXOzyi3o12ccDvyXz3JJyPPOPvTaN%252Bk7RWosFobQEGC5OUxIiNJ1PvwzCAGtLWVu9ZBSoZ%252BGHt6eJ%252F2RNG6LwOZ8GdBSxg4jv2UgqI0StpGxP%252FfNk3GA%252F4H%252Fk9YiGoQ%253D%253D%26Expires%3D1789892017&amp;app=chrome.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="7d50bd87bccd468d978358c71db" src="//local.adguard.org?ts=1789891423327&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="./styles.css">
+  <title>CarbuVision</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">CV</span><div><h1>CarbuVision</h1><p>Prix, prévisions et meilleur détour</p></div></div>
+    <div class="header-actions">
+      <button class="icon-btn" id="locationButton" title="Utiliser ma position" aria-label="Utiliser ma position">⌖</button>
+      <button class="icon-btn" id="themeButton" title="Changer de thème" aria-label="Changer de thème">◐</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="notice" id="dataNotice">
+      <strong>Données à importer.</strong> Ouvrez <button class="link-button" data-open-tab="data">Données</button>, puis collez l’URL directe du CSV/JSON ou choisissez le fichier téléchargé depuis data.gouv.fr.
+    </section>
+
+    <section class="tab-panel active" id="tab-explore" aria-labelledby="nav-explore">
+      <div class="toolbar-card">
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Ville, enseigne, adresse, service…" autocomplete="off"></label>
+        <button class="secondary-button" id="filterButton">Filtres <span id="activeFilterCount"></span></button>
+        <select id="sortSelect" aria-label="Trier les stations">
+          <option value="price">Prix actuel</option><option value="forecast">Prix prévu</option><option value="distance">Distance</option><option value="variation">Baisse prévue</option>
+        </select>
+      </div>
+      <div class="quick-filters" id="fuelChips"></div>
+      <div class="summary" id="summary">Importez une source pour commencer.</div>
+      <div class="insights" id="insights"></div>
+      <div class="station-list" id="stationList"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-map" aria-labelledby="nav-map">
+      <div class="map-toolbar"><span id="mapCount">0 station</span><button class="secondary-button" id="fitMapButton">Cadrer les résultats</button></div>
+      <div id="map" role="application" aria-label="Carte des stations"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-analysis" aria-labelledby="nav-analysis">
+      <article class="panel-card"><h2>Calculer le vrai gain</h2><p>Compare le gain à la pompe avec le carburant consommé pour faire le détour. Le temps, les péages et l’usure ne sont pas intégrés.</p>
+        <div class="form-grid">
+          <label>Carburant <select id="calcFuel"></select></label>
+          <label>Volume du plein (L)<input id="calcVolume" type="number" min="1" step="1" value="45"></label>
+          <label>Prix habituel (€/L)<input id="calcLocalPrice" type="number" min="0" step="0.001" placeholder="1.750"></label>
+          <label>Prix cible (€/L)<input id="calcTargetPrice" type="number" min="0" step="0.001" placeholder="1.700"></label>
+          <label>Consommation (L/100 km)<input id="calcConsumption" type="number" min="0.1" step="0.1" value="6.5"></label>
+          <label>Détour aller-retour (km)<input id="calcDetour" type="number" min="0" step="0.1" value="0"></label>
+        </div>
+        <button class="primary-button" id="useCheapestButton">Utiliser le meilleur prix importé</button>
+        <div class="economics-grid" id="economics"></div>
+      </article>
+      <article class="panel-card"><h2>Profil véhicule</h2><p>Conservé uniquement dans ce navigateur.</p>
+        <div class="form-grid"><label>Nom du véhicule<input id="vehicleName" type="text" placeholder="Ex. Clio E-Tech"></label><label>Carburant par défaut<select id="vehicleFuel"></select></label><label>Capacité du réservoir (L)<input id="tankCapacity" type="number" min="1" step="1" value="45"></label></div>
+        <button class="secondary-button" id="saveVehicleButton">Enregistrer le profil</button>
+      </article>
+    </section>
+
+    <section class="tab-panel" id="tab-favorites" aria-labelledby="nav-favorites">
+      <div class="section-heading"><div><h2>Favoris</h2><p>Vos stations enregistrées sur cet appareil</p></div><button class="secondary-button" id="exportButton">Exporter mes réglages</button></div>
+      <div class="station-list" id="favoriteList"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-data" aria-labelledby="nav-data">
+      <article class="panel-card">
+        <h2>Importer les données</h2>
+        <p>Utilisez l’URL <strong>directe</strong> du fichier CSV/JSON — pas l’URL de la page du jeu de données. Si le navigateur bloque l’URL à cause de CORS, téléchargez le fichier puis importez-le ci-dessous.</p>
+        <label class="full-field">URL directe CSV ou JSON<input id="sourceUrl" type="url" placeholder="https://…/fichier.csv"></label>
+        <div class="button-row"><button class="primary-button" id="loadUrlButton">Importer depuis l’URL</button><button class="secondary-button" id="refreshButton">Actualiser</button></div>
+        <label class="upload-box">Choisir un CSV ou JSON téléchargé<input id="fileInput" type="file" accept=".csv,.json,text/csv,application/json"></label>
+        <p class="status" id="loadStatus" aria-live="polite"></p>
+      </article>
+      <article class="panel-card"><h2>Qualité et confidentialité</h2><div id="dataQuality" class="quality-grid"></div><p class="muted">La géolocalisation, les favoris, le profil et le cache sont stockés sur l’appareil. Les coordonnées ne sont pas envoyées par CarbuVision.</p></article>
+      <article class="panel-card danger-zone"><h2>Maintenance</h2><button class="danger-button" id="clearDataButton">Effacer données, cache et favoris</button></article>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navigation principale">
+    <button id="nav-explore" class="active" data-tab="explore"><span>⌕</span>Explorer</button>
+    <button id="nav-map" data-tab="map"><span>⌖</span>Carte</button>
+    <button id="nav-analysis" data-tab="analysis"><span>◫</span>Analyse</button>
+    <button id="nav-favorites" data-tab="favorites"><span>♥</span>Favoris</button>
+    <button id="nav-data" data-tab="data"><span>⇅</span>Données</button>
+  </nav>
+
+  <dialog id="filterDialog"><form method="dialog" class="dialog-content"><div class="dialog-header"><h2>Filtres</h2><button class="icon-btn" value="cancel" aria-label="Fermer">×</button></div>
+    <label>Carburant<select id="filterFuel"></select></label>
+    <label>Prix actuel maximal (€/L)<input id="filterMaxPrice" type="number" min="0" step="0.001" placeholder="Aucune limite"></label>
+    <label>Rayon maximal : <output id="radiusOutput">30</output> km<input id="filterRadius" type="range" min="2" max="100" value="30"></label>
+    <label class="toggle-row"><input id="filterDrop" type="checkbox"> Uniquement les baisses prévues</label>
+    <label>Confiance<select id="filterConfidence"><option value="">Toutes</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+    <label>Services / mots-clés<input id="filterService" type="text" placeholder="lavage, automate, 24/24…"></label>
+    <div class="button-row"><button class="secondary-button" type="button" id="resetFiltersButton">Réinitialiser</button><button class="primary-button" value="default">Afficher les résultats</button></div>
+  </form></dialog>
+
+  <dialog id="stationDialog"><div class="dialog-content station-dialog-content"><div class="dialog-header"><h2 id="stationTitle">Station</h2><button class="icon-btn" id="closeStationButton" aria-label="Fermer">×</button></div><div id="stationDetail"></div></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./app.js"></script>
+</body>
+</html>

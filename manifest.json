@@ -1,0 +1,13 @@
+{
+  "name": "CarbuVision — Prix carburants",
+  "short_name": "CarbuVision",
+  "description": "Prix actuels, prévisions et calcul du détour rentable.",
+  "lang": "fr-FR",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f7f5",
+  "theme_color": "#087443",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
